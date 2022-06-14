@@ -1,0 +1,24 @@
+service: gamertic-backend
+
+app: gamertic-backend
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev
+
+functions:
+  getProducts:
+    handler: routes/products.getAll
+    events:
+      - http:
+          path: /products
+          method: get
+  getProductById:
+    handler: routes/products.get
+    events:
+      - http:
+          path: products/{id}
+          method: get
